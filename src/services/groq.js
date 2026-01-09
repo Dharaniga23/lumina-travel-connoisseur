@@ -1,4 +1,4 @@
-const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY;
+const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY?.trim();
 
 const SYSTEM_PROMPT = `
 You are Lumina, a high-end AI travel connoisseur. 
