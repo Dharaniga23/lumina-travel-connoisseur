@@ -50,6 +50,7 @@ export const getLuminaGroqResponse = async (history) => {
         return data.choices[0].message.content;
     } catch (error) {
         console.error("Groq Error:", error);
-        return `Lumina encountered a slight delay in the Groq clouds: ${error.message}. Please check your API key and connection.`;
+        const keyInfo = GROQ_API_KEY ? `(Key Length: ${GROQ_API_KEY.length}, Starts with: ${GROQ_API_KEY.slice(0, 4)}...)` : "(Key missing)";
+        return `Lumina encountered a slight delay in the Groq clouds: ${error.message}. ${keyInfo} Please check your Netlify environment variables.`;
     }
 };
