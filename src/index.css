@@ -1,0 +1,245 @@
+:root {
+  --primary: #ffffff;
+  --secondary: rgba(255, 255, 255, 0.1);
+  --accent: #4ade80;
+  --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  --glass: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg-gradient);
+  color: var(--text-main);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.app-container {
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.glass-panel {
+  width: 800px;
+  height: 800px;
+  max-width: 90vw;
+  max-height: 85vh;
+  background: var(--glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 2rem;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.app-header {
+  padding: 2.5rem 2rem;
+  border-bottom: 1px solid var(--glass-border);
+  background: radial-gradient(circle at top center, rgba(74, 222, 128, 0.05), transparent);
+}
+
+.header-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.logo-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--accent);
+  filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.4));
+  animation: float 6s ease-in-out infinite;
+}
+
+.title-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.title-stack h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -2px;
+  background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.spark-icon {
+  width: 1rem;
+  height: 1rem;
+  color: var(--accent);
+  margin-top: -1.5rem;
+}
+
+.title-stack p {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+
+  50% {
+    transform: translateY(-5px) rotate(5deg);
+  }
+}
+
+.chat-window {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.message {
+  display: flex;
+  width: 100%;
+}
+
+.message.ai {
+  justify-content: flex-start;
+}
+
+.message.user {
+  justify-content: flex-end;
+}
+
+.message-bubble {
+  max-width: 70%;
+  padding: 1rem 1.5rem;
+  border-radius: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.ai .message-bubble {
+  background: var(--secondary);
+  border: 1px solid var(--glass-border);
+  border-bottom-left-radius: 0.2rem;
+}
+
+/* Markdown Styling */
+.message-bubble h1,
+.message-bubble h2,
+.message-bubble h3 {
+  margin: 1rem 0 0.5rem 0;
+  font-size: 1.2rem;
+  color: var(--primary);
+}
+
+.message-bubble p {
+  margin-bottom: 0.8rem;
+}
+
+.message-bubble p:last-child {
+  margin-bottom: 0;
+}
+
+.message-bubble ul,
+.message-bubble ol {
+  margin: 0.5rem 0 1rem 1.5rem;
+}
+
+.message-bubble li {
+  margin-bottom: 0.4rem;
+}
+
+.message-bubble blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 1rem;
+  margin: 1rem 0;
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+.user .message-bubble {
+  background: var(--accent);
+  color: #0f172a;
+  font-weight: 500;
+  border-bottom-right-radius: 0.2rem;
+}
+
+.input-area {
+  padding: 2rem;
+  display: flex;
+  gap: 1rem;
+  border-top: 1px solid var(--glass-border);
+}
+
+.input-area input {
+  flex: 1;
+  background: var(--secondary);
+  border: 1px solid var(--glass-border);
+  border-radius: 1rem;
+  padding: 1rem 1.5rem;
+  color: white;
+  font-family: inherit;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.input-area input:focus {
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.input-area button {
+  background: var(--primary);
+  color: #0f172a;
+  border: none;
+  border-radius: 1rem;
+  padding: 0 2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.input-area button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
